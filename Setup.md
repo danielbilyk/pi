@@ -27,7 +27,7 @@
 - Configure settings `sudo raspi-config`
 
 **☝🏻 N.B.:** enable SSH and VNC for remote access under “Interface Options”. Don't forget to `sudo reboot` when finished.
-- Generate public/private RSA key pair `ssh-keygen` 
+- Generate public/private SSH key pair `ssh-keygen -t ed22519` 
 - Update list of available packages and their versions, as well as install newer versions of packages `sudo apt-get update && sudo apt-get upgrade`
 - Install vim `sudo apt-get install vim`
 
@@ -36,7 +36,7 @@ Check the assigned IP-address `hostname -I`
 
 ### Connect via SSH
 `ssh pi@<ip_address>`
-Create `authorized_keys` file under `/home/pi/.ssh` and put a public RSA key of your Mac/PC
+Create `authorized_keys` file under `/home/pi/.ssh` and put a public SSH key of your Mac/PC
 
 ### Connect via VNC
  `¯\_(ツ)_/¯` 
@@ -44,8 +44,7 @@ Create `authorized_keys` file under `/home/pi/.ssh` and put a public RSA key of 
 ### Connect via ngrok
 - Download [ngrok](https://ngrok.com/download) to Rasperry Pi
 - Register on ngrok-website to get authtoken (to be found in ngrok account settings)
-- Launch `screen`
-`screen -R <screen_name>`
+- Launch `screen -R <screen_name>`
 - Save `authtoken`
 `<path_to_.ngrok> authtoken <token>`
 - Open a TCP connection on desired port
@@ -56,8 +55,7 @@ Create `authorized_keys` file under `/home/pi/.ssh` and put a public RSA key of 
 - Exit `screen` using ctrl+A, D
 - To see the list of running screens use
 `screen -ls`
-- Enter launched `screen`
-`screen -R <screen_name>`
+- Enter launched `screen -R <screen_name>`
 
 ### Assigning static IP-address to Raspberry Pi
 - [Link](https://www.nextofwindows.com/how-to-configure-mi-wi-fi-as-second-router-to-extend-existing-network-same-ssid-roaming) for MiRouter
