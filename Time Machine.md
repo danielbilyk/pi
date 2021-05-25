@@ -35,32 +35,20 @@ Append the following line, replacing the <UUID> with UUID determined above
 `sudo mount /media/TimeMachine`
 ---
 ## Making storage device visible on the network
-    
-- On Pi, install [netatalk](https://wiki.archlinux.org/index.php/Netatalk)
-`sudo apt-get install netatalk -y`
-- Edit the configuration file `sudo vim /etc/nsswitch.conf`. Insert `mdns4_minimal [NOTFOUND=return] dns mdns4 mdns` to the line that starts with hosts
-
-![](https://github.com/danielbilyk/pi/blob/main/images/nsswitch.png)
-
+  
 - Edit the configuration file `sudo vim /etc/netatalk/afp.conf` to mimic the behaviour of Time Capsule on the Mac *(so that it looks nice)*. Append
     
 ```
-[Global]
-  mimic model = TimeCapsule6,106
 
-[Time Machine]
-  path = /media/TimeMachine
-  time machine = yes
 ```
 
 - Launch the services
 ```
 sudo service avahi-daemon start
-sudo service netatalk start
 ```
 - Configure the RPi boot routine by editing crontab `crontab -e` and appending
 ```
-@reboot sleep 30 && mount /media/TimeMachine && sleep 30 && umount /media/TimeMachine && sleep 30 && mount /media/TimeMachine && sleep 30 && service avahi-daemon start && service netatalk start
+@reboot sleep 30 && mount /media/TimeMachine && sleep 30 && umount /media/TimeMachine && sleep 30 && mount /media/TimeMachine && sleep 30 && service avahi-daemon start
 ```
 ---
 ## Connect to Pi from Mac and backup
